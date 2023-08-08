@@ -1,0 +1,60 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bingo Card</title>
+  <!-- Include Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="./resources/css/styles.css">
+</head>
+
+<body>
+  <div class="container">
+    <a href="http://www.hyeumine.com/bingodashboard.php?bcode=" class="text-center mt-5" target="_blank">
+      <h1>Bingo</h1>
+    </a>
+    <div class="bingo-card">
+      <div class="bingo-header">B</div>
+      <div class="bingo-header">I</div>
+      <div class="bingo-header">N</div>
+      <div class="bingo-header">G</div>
+      <div class="bingo-header">O</div>
+      <div class="cell" data-letter="B1">1</div>
+      <div class="cell" data-letter="I1">16</div>
+      <div class="cell" data-letter="N1">31</div>
+      <div class="cell" data-letter="G1">46</div>
+      <div class="cell" data-letter="O1">61</div>
+      <div class="cell" data-letter="B2">2</div>
+      <div class="cell" data-letter="I2">17</div>
+      <div class="cell" data-letter="N2">32</div>
+      <div class="cell" data-letter="G2">47</div>
+      <div class="cell" data-letter="O2">62</div>
+      <div class="cell" data-letter="B3">3</div>
+      <div class="cell" data-letter="I3">18</div>
+      <div class="cell" data-letter="N3">33</div>
+      <div class="cell" data-letter="G3">48</div>
+      <div class="cell" data-letter="O3">63</div>
+      <div class="cell" data-letter="B4">4</div>
+      <div class="cell" data-letter="I4">19</div>
+      <div class="cell" data-letter="N4">34</div>
+      <div class="cell" data-letter="G4">49</div>
+      <div class="cell" data-letter="O4">64</div>
+      <div class="cell" data-letter="B5">5</div>
+      <div class="cell" data-letter="I5">20</div>
+      <div class="cell" data-letter="N5">35</div>
+      <div class="cell" data-letter="G5">50</div>
+      <div class="cell" data-letter="O5">65</div>
+    </div>
+    <div class="load-card-form">
+      <input class="load-card-input" type="text" placeholder="Enter card ID">
+      <button class="load-card-button" onclick="loadCard()">Load Card</button>
+    </div>
+    <div class="load-card-form">
+      <button class="load-card-button" onclick="checkCardWin()">Check Card Win</button>
+    </div>
+  </div>
+  <script src="./resources/js/bingo.js"></script>
+</body>
+
+</html>

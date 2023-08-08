@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bingo Card</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .square {
+            width: 100px;
+            height: 100px;
+            text-align: center;
+            line-height: 100px;
+            font-size: 18px;
+            border: 1px solid #ccc;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .square:hover {
+            background-color: #f5f5f5;
+        }
+        #bingoCard {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 70vh;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col text-center">
+            <h2>Bingo Card Generator</h2>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-md-4 offset-md-4">
+            <div class="input-group">
+                <input type="text" class="form-control" id="gameCodeInput" placeholder="Enter Game Code">
+                <div class="input-group-append">
+                    <button class="btn btn-primary" type="button" onclick="loadCard()">Load Card</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-5">
+        <div class="col text-center">
+            <div id="bingoCard" class="row"></div>
+        </div>
+    </div>
+</div>
+
+<script>
+function loadCard() {
+    const bcode = document.getElementById('gameCodeInput').value;
+    if (bcode) {
+        const url = `http://www.hyeumine.com/getcard.php?bcode=${bcode}`;
+        
+        fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                if (data.card) {
+                    displayCard(data.card);
+                } else {
+                    alert("Game Code not found.");
+                }
+            })
+            .catch(error => {
+                console.error("Error fetching card:", error);
+            });
+    }
+}
+
+function displayCard(cardData) {
+    const bingoCard = document.getElementById('bingoCard');
+    bingoCard.innerHTML = ''; // Clear previous card
+    
+    const cardTable = document.createElement('div');
+    cardTable.classList.add('row');
+    
+    for (let row in cardData) {
+        const cells = cardData[row];
+        const newRow = document.createElement('div');
+        newRow.classList.add('row', 'mb-2');
+        
+        for (let i = 0; i < cells.length; i++) {
+            const newCell = document.createElement('div');
+            newCell.classList.add('col-2', 'square');
+            newCell.textContent = cells[i];
+            newRow.appendChild(newCell);
+        }
+        
+        cardTable.appendChild(newRow);
+    }
+    
+    bingoCard.appendChild(cardTable);
+}
+
+</script>
+
+</body>
+</html>
